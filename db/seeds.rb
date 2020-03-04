@@ -1,3 +1,6 @@
+Race.destroy_all
+Klass.detroy_all
+
 dragonborn = Race.create(race_name: "Dragonborn", strength: 2, dexterity: 0, constitution: 0,intelligence: 0, wisdom: 0, charisma: 1)
 dwarf = Race.create(race_name: "Dwarf", strength: 0, dexterity: 0, constitution: 2,intelligence: 0, wisdom: 0, charisma: 0)
 elf = Race.create(race_name: "Elf", strength: 0, dexterity: 2, constitution: 0,intelligence: 0, wisdom: 0, charisma: 0)
