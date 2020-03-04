@@ -1,6 +1,6 @@
 class CreateRacesTable < ActiveRecord::Migration[6.0]
   def change
-    creat_table races do |t|
+    create_table :races do |t|
       t.string :race_name
       t.integer :strength
       t.integer :dexterity
@@ -8,5 +8,6 @@ class CreateRacesTable < ActiveRecord::Migration[6.0]
       t.integer :intelligence
       t.integer :wisdom
       t.integer :charisma
+    end
   end
 end
