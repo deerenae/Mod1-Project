@@ -29,19 +29,33 @@ elsif response == "Build_my_character"
     chosen_klass = prompt.select("What class are you running?", Klass.pluck(:klass_name), active_color: :blue)
     klass = Klass.find_by(klass_name: chosen_klass)
     
-    strength = rand(3...19)
-    dex = rand(3...19)
-    int = rand(3...19)
-    wisdom = rand(3...19)
-    con = rand(3...19)
-    charisma = rand(3...19)
+    rand_strength = rand(3...19)
+    rand_dex = rand(3...19)
+    rand_int = rand(3...19)
+    rand_wisdom = rand(3...19)
+    rand_con = rand(3...19)
+    rand_charisma = rand(3...19)
 
     prompt.say("Time to assign your attributes!")
-    prompt.say("Hmmm... It seems you have a #{strength} in strength.")
-    prompt.say("You also have a #{dex} in dexterity.")
-    prompt.say("Your intelligence is #{int}")
-    prompt.say("Your wisdom seems to be #{wisdom}")
-    prompt.say("You can take a hit with a constitution of #{con}")
-    prompt.say("#{charisma} in charisma, eh?")
+    prompt.say("You have a #{rand_strength} in strength.")
+    prompt.say("You have a #{rand_dex} in dexterity.")
+    prompt.say("You have a #{rand_int} in intelligence.")
+    prompt.say("You have a #{rand_wisdom} in wisdom.")
+    prompt.say("You have a #{rand_con} in constitution.")
+    prompt.say("You have a #{rand_charisma} in charisma.")
 
+    prompt.say("And we'll add on your race bonuses...")
+    total_strength = race.strength + rand_strength
+    total_dex = race.dexterity + rand_dex
+    total_int = race.intelligence + rand_int
+    total_wisdom = race.wisdom + rand_wisdom
+    total_con = race.constitution + rand_con
+    total_charisma = race.charisma + rand_charisma
+
+    prompt.say("Hmmm... It seems you have a #{total_strength} in strength.")
+    prompt.say("You also have a #{total_dex} in dexterity.")
+    prompt.say("Your intelligence is #{total_int}")
+    prompt.say("Your wisdom seems to be #{total_wisdom}")
+    prompt.say("You can take a hit with a constitution of #{total_con}")
+    prompt.say("#{total_charisma} in charisma, eh?")
 end
