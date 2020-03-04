@@ -1,4 +1,5 @@
 require_relative 'config/environment'
+require 'pry'
 
 prompt = TTY::Prompt.new
 
@@ -10,4 +11,9 @@ elsif response == "Build_my_character"
     puts "Alright, let's get started then!"
     name = prompt.ask("What is your character's name?")
     puts "Ah, #{name}, a fine choice."
+    chosen_race = prompt.select("What race is your character?", Race.pluck(:race_name))
+    race = Race.find_by(race_name: chosen_race)
+    chosen_klass = prompt.select("What class are you running?", Klass.pluck(:klass_name))
+    klass = Klass.find_by(klass_name: chosen_klass)
+    binding.pry
 end

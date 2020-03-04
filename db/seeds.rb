@@ -9,7 +9,7 @@ human = Race.create(race_name: "Human", strength: 1, dexterity: 1, constitution:
 tiefling = Race.create(race_name: "Tiefling", strength: 0, dexterity: 0, constitution: 1,intelligence: 1, wisdom: 0, charisma: 2)
 
 
-barbarian = Klass.create(klass_name: "Barbarian", weapon: "Greateaxe", item: "Exporer's pack" )
+barbarian = Klass.create(klass_name: "Barbarian", weapon: "Greataxe", item: "Exporer's pack" )
 bard = Klass.create(klass_name: "Bard", weapon: "Lute", item: "Entertainer's pack" )
 cleric = Klass.create(klass_name: "Cleric", weapon: "Mace", item: "Priest's pack" )
 druid = Klass.create(klass_name: "Druid", weapon: "Scimitar", item: "Explorer's pack" )
