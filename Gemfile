@@ -14,3 +14,5 @@ gem "require_all", "~> 3.0"
 gem "rack", ">= 2.0.8"
 
 gem "tty-prompt", "~> 0.20.0"
+
+gem "tty-font", "~> 0.5.0"
