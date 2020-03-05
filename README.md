@@ -1,72 +1,40 @@
-# Mod 1 ActiveRecord Starter Repo
-Simple change
+# D&D Character Creator
+This CLI app will guide a user through the process of creating a basic, fifth edition Dungeons and Dragons character.
 
-In `config/database.yml`, you can change the name of the database from `db/cats.sqlite3` to whatever reflects your project. For example: `db/notes.sqlite3`. Doesn't really matter what you call the db. 
+## Motivation
+We wanted to be able to help newer Dungeons and Dragons players build a character to use for their campaign.
+
+## Features
+This app has the ability to create a new character or request a preset character. If the user chooses to build their own character they make their character name then they have 9 races and 12 classes to choose from. After that they 'roll' for their player attributes. 
 
 
+## Installation
+To begin you will want to fork and clone from the project page
 
-## ActiveRecord Methods
-These common ActiveRecord methods will help you interact with your database. Please refer to the ActiveRecord
-docs for what they do and how to use them. (If the docs talk about Rails, that is ok! ActiveRecord works very
- similar with or without Rails.)
+Then the following commands in the terminal
 ```
-  .create (.new, .save)
-  .all
-  .count
-  .find
-  .find_by
-  .where
+  rake db:migrate
 ```
-
-#### Notes
-
-*Remember*, any model that will have a corresponding table in the database needs to inherit from `ActiveRecord::Base`
-ex:
 ```
-class Cat < ActiveRecord::Base
-  # customer methods defined here
-end
+  rake db:seed
+```
+```
+  bundle install  
 ```
 
-- To view database, you can run `sqlite3 db/cats.db`, then can run `.schema` or `.tables` and can run any SQL commands. (Don't need to do this anymore though! ActiveRecord gives us a schema file!)
+## How to use?
+To begin the app will ask if you would like to build your own character or randomly select a preset one. 
 
+  If you choose the preset option it returns a pre-built character. It will then ask if you want to keep it or start over.
+  If you choose the build your own character it then asks what you would like your character name to be. 
+  After entering your character name it then moves on to selecting race.
+  Next is class selection.
+  Following those choices you 'roll' for your characters attributes. 
+  Once you have your rolled amounts your race bonuses will be added to give you your attribute totals. 
 
-### Steps to setup Ruby app with activerecord
-(New for ActiveRecord 6.0)
+  At the end the app reviews the character you have created and asks if you would like to save it or change anything. 
+    If you choose to change something you are given the list of options of what you would like to change. 
+    Depending on your choice you will be taken to that area to update your character. 
+    If you choose to save your character it will save and ask if you would like to create another character. 
+      You can create another new character or exit the app.
 
-
-## The following steps are already done for you in this boiler plate repo. 
-## The steps below are provided to you as a reference only. 
-## You're not expected to memorize this (please don't).
-
-
-1. In root of project, run `bundle init`
-1. Add gems: 
-  `bundle add activerecord pry sinatra, sinatra-activerecord rake sqlite3 require_all`
-  run `bundle install`
-1. mkdir config and lib 
-1. mkdir lib/models
-1. touch config/environment.rb config/database.yml
-1. Create your model files and models (make sure to have your models inherit from ActiveRecord::Base)
-1. In config/environment.rb:
-```
-  require 'bundler/setup'
-  Bundler.require
-
-  require_all 'lib'
-```
-1. In config/database.yml:
-  ```
-  development:
-    adapter: sqlite3
-    database: db/cats.sqlite3
-  ```
-1. Touch Rakefile - require ‘config/environment.rb’ and require_relative ‘sinatra/activerecord/rake’ 
-1. Run rake -T to make sure we have access to raketasks
-1. Run `rake db:create_migration NAME=create_cats_table` (will create the db folder if it doesn’t already exist) and will add the migration file to db/migration
-1. Write migration file, then run `rake db:migrate`
-1. Then can see schema in file structure, can also drop into sqlite3 cats.db to see the tables and schema, but don’t really need to do that anymore. *Review rollback here*
-1. Create seeds in db/seeds.rb and run `rake db:seed`
-1. Now can put a pry in environment.rb to run <ModelName>.all and see your seeds.
-
-Make sure your models inherit from `ActiveRecord::Base`
