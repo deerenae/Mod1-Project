@@ -11,6 +11,15 @@ class Cli
         if response == "Preset"
             puts "Please wait while we generate a character..."
             puts ""
+            sleep(2)
+            0.step(100, 20) do |i|
+               printf("\rGenerating: [%-20s]", "*" * (i/5))
+               sleep(0.5)
+            end
+            @character = Character.all.sample
+            binding.pry
+            character_review
+            exit
         elsif response == "Build_my_character"
             puts "Alright, let's get started then!"
 
@@ -43,6 +52,7 @@ class Cli
         chosen_klass = prompt.select("What class are you running?", Klass.pluck(:klass_name), active_color: :blue)
         klass = Klass.find_by(klass_name: chosen_klass)
         puts "Ahh, a #{klass.klass_name}, not a bad choice."
+        puts "You are equipped with a #{klass.weapon} and #{klass.item}."
         character.klass = klass
     end
     
@@ -125,6 +135,11 @@ class Cli
 
     def character_review
         prompt = TTY::Prompt.new
+        sleep(4)
+        0.step(100, 20) do |i|
+            printf("\rGenerating character: [%-10s]", "*" * (i/10))
+            sleep (0.5)
+        end
         puts ""
         prompt.say("Ok, let's look at what we have...")
         prompt.say("You are #{character.name}, the #{character.race.race_name} known for being a #{character.klass.klass_name}.")
@@ -134,21 +149,31 @@ class Cli
         puts "         #{character.wisdom} wisdom,"
         puts "         #{character.constitution} constitution,"
         puts "     and #{character.charisma} charimsa."
+        puts "You are equipped with a #{character.klass.weapon} and #{character.klass.item}."
         answer = prompt.yes?("Is this what you had in mind?")
-        if answer == 'yes'
+        if answer == true
             puts "Then join us, #{character.name}. Adventure awaits!"
             character.save
-        elsif answer == 'no'
+            restart = prompt.yes?("Would you like to create a new character?")
+            if restart == true
+                welcome
+            end
+        elsif answer == false
             rework = prompt.select("What would you like to change?", %w(Name Race Class Attributes))
             if rework.downcase == "name"
                 name_choice
+                character_review
             elsif rework.downcase == "race"
                 race_choice
                 attribute_adder
+                character_review
             elsif rework.downcase == "class"
                 klass_choice
+                character_review
             elsif rework.downcase == 'attributes'
                 attribute_roller
+                attribute_adder
+                character_review
             end
         end
     end
