@@ -10,12 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_03_231504) do
+ActiveRecord::Schema.define(version: 2020_03_05_181556) do
 
   create_table "characters", force: :cascade do |t|
     t.string "name"
     t.integer "klass_id"
     t.integer "race_id"
+    t.integer "strength"
+    t.integer "dexterity"
+    t.integer "constitution"
+    t.integer "intelligence"
+    t.integer "wisdom"
+    t.integer "charisma"
     t.index ["klass_id"], name: "index_characters_on_klass_id"
     t.index ["race_id"], name: "index_characters_on_race_id"
   end
