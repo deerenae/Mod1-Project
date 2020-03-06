@@ -153,15 +153,10 @@ class Cli
         if answer == true
             puts "Then join us, #{character.name}. Adventure awaits!"
             character.save
-            restart = prompt.yes?("Would you like to create a new character?")
-            if restart == true
-                welcome
-            else
-                puts "Thank you for stopping by, traveler."
-                sleep(2)
-                system("clear")
-                exit
-            end    
+            puts "Thank you for stopping by, traveler."
+            sleep(2)
+            system("clear")
+            exit
         elsif answer == false
             rework = prompt.select("What would you like to change?", %w(Name Race Class Attributes))
             if rework.downcase == "name"
