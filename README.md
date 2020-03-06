@@ -43,7 +43,6 @@ At the end the app reviews the character you have created and asks if you would 
 If you choose to change something you are given the list of options of what you would like to change. 
   Depending on your choice you will be taken to that area to update your character. 
 
-#### Saveing character
-If you choose to save your character it will save and ask if you would like to create another character. 
-  You can create another new character or exit the app.
+#### Saving character
+If you choose to save your character it will save and then the app will close.
 
