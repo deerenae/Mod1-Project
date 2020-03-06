@@ -65,6 +65,7 @@ class Cli
         rand_charisma = rand(3...19)
 
         prompt.say("Time to assign your attributes!")
+        puts ""
         sleep(2)
         0.step(100, 20) do |i|
                 printf("\rRolling: [%-20s]", "*" * (i/5))
@@ -99,6 +100,7 @@ class Cli
         rand_charisma = character.charisma
 
         prompt.say("And we'll add on your race bonuses...")
+        puts ""
         sleep(2)
         0.step(100, 20) do |i|
             printf("\rAdding: [%-20s]", "*" * (i/5))
@@ -141,6 +143,7 @@ class Cli
         end
         puts ""
         prompt.say("Ok, let's look at what we have...")
+        puts ""
         prompt.say("You are #{character.name}, the #{character.race.race_name} known for being a #{character.klass.klass_name}.")
         puts "You have #{character.strength} strength,"
         puts "         #{character.dexterity} dexterity,"
@@ -149,6 +152,7 @@ class Cli
         puts "         #{character.constitution} constitution,"
         puts "     and #{character.charisma} charimsa."
         puts "You are equipped with a #{character.klass.weapon} and #{character.klass.item}."
+        puts ""
         answer = prompt.yes?("Is this what you had in mind?")
         if answer == true
             puts "Then join us, #{character.name}. Adventure awaits!"
