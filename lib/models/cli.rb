@@ -18,11 +18,10 @@ class Cli
             end
             @character = Character.all.sample
             character_review
-            exit
+            
             system("clear")
         elsif response == "Build_my_character"
             puts "Alright, let's get started then!"
-
         end
     end
 
@@ -129,7 +128,7 @@ class Cli
         character.constitution = total_con
         character.charisma = total_charisma
 
-        sleep(3)
+        sleep(6)
 
     end
 
