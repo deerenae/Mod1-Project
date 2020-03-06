@@ -17,9 +17,9 @@ class Cli
                sleep(0.5)
             end
             @character = Character.all.sample
-            binding.pry
             character_review
             exit
+            system("clear")
         elsif response == "Build_my_character"
             puts "Alright, let's get started then!"
 
@@ -40,7 +40,6 @@ class Cli
 
     def race_choice        
         prompt = TTY::Prompt.new
-        puts ""
         chosen_race = prompt.select("What race is your character?", Race.pluck(:race_name), active_color: :red)
         race = Race.find_by(race_name: chosen_race)
         character.race = race
@@ -48,7 +47,6 @@ class Cli
 
     def klass_choice
         prompt = TTY::Prompt.new
-        puts ""
         chosen_klass = prompt.select("What class are you running?", Klass.pluck(:klass_name), active_color: :blue)
         klass = Klass.find_by(klass_name: chosen_klass)
         puts "Ahh, a #{klass.klass_name}, not a bad choice."
@@ -131,11 +129,13 @@ class Cli
         character.constitution = total_con
         character.charisma = total_charisma
 
+        sleep(3)
+
     end
 
     def character_review
         prompt = TTY::Prompt.new
-        sleep(4)
+        sleep(1)
         0.step(100, 20) do |i|
             printf("\rGenerating character: [%-10s]", "*" * (i/10))
             sleep (0.5)
@@ -157,7 +157,12 @@ class Cli
             restart = prompt.yes?("Would you like to create a new character?")
             if restart == true
                 welcome
-            end
+            else
+                puts "Thank you for stopping by, traveler."
+                sleep(2)
+                system("clear")
+                exit
+            end    
         elsif answer == false
             rework = prompt.select("What would you like to change?", %w(Name Race Class Attributes))
             if rework.downcase == "name"
